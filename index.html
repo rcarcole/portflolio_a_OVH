@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full bg-gray-100">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Portfolio</title>
+	<link rel="shortcut icon" href="/media/portfolio-my-profile.svg" type="image/x-icon" />
+	<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+		integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+	<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
+	<script nomodule src="https://unpkg.com/ionicons@7.1.0/tdist/ionicons/ionicons.js"></script>
+	<script src="./node_modules/flowbite/dist/flowbite.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-FR4ZZN53BS"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'G-FR4ZZN53BS');
+	</script>
+	<link rel="stylesheet" href="/css/styles.css" />
+	<link rel="stylesheet" href="/public/styles.css">
+</head>
+
+<body class="h-full">
+	<ol id="mainNav"
+		class="flex items-center w-full text-sm font-medium text-center text-gray-500 dark:text-gray-400 sm:text-base menu">
+		<li
+			class="flex md:w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-1  sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700">
+			<a href="#home">
+				<span
+					class="flex items-center after:content-['/'] sm: after:mx-2 after:text-gray-200 dark:after:text-gray-500">
+					Sobre mí
+				</span>
+			</a>
+		</li>
+		<li
+			class="flex md:w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-1  sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700">
+			<a href="#proyectos">
+				<span
+					class="flex items-center after:content-['/'] sm: after:mx-2 after:text-gray-200 dark:after:text-gray-500">
+					Proyectos
+				</span>
+			</a>
+		</li>
+		<li
+			class="flex md:w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-1  sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700">
+			<a href="#trabajosFormacion">
+				<span
+					class="flex items-center after:content-['/'] sm: after:mx-2 after:text-gray-200 dark:after:text-gray-500">
+					Trabajos y Formación
+				</span>
+			</a>
+		</li>
+		<li
+			class="flex md:w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-1  sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700">
+			<a href="#habilidades">
+				<span
+					class="flex items-center after:content-['/'] sm: after:mx-2 after:text-gray-200 dark:after:text-gray-500">
+					Skills
+				</span>
+			</a>
+		</li>
+		<li
+			class="flex md:w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-1  sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700">
+			<a href="#redesSociales">
+				<span
+					class="flex items-center after:content-['/'] sm: after:mx-2 after:text-gray-200 dark:after:text-gray-500">
+					Redes Sociales
+				</span>
+			</a>
+		</li>
+	</ol>
+	<div id="home" class="relative imgFondo2">
+		<div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+			<div class="grid md:grid-cols-2 grid-cols-1 gap-4">
+				<!-- Columna 1 -->
+				<div class="p-16 sm:pb-40 sm:pt-24 lg:pb-48 lg:pt-40">
+					<h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl nombre textCentered">Robert
+						Carcolé
+						Solanes</h1>
+					<p class="mt-4 text-xl text-gray-50 textCentered">Junior Full-Stack Developer & SysAdmin</p>
+					<br>
+					<a href="/files/CV_RobertCS_20-10-2023.pdf" download="CV_RobertCS_20-10-2023.pdf"
+						class="inline-block rounded-md border border-transparent bg-emerald-600 px-8 py-3 text-center font-medium text-white hover:bg-emerald-700 buttonDownloadCV">Descargar
+						Currículum</a>
+				</div>
+				<!-- Columna 2 -->
+				<div class="flex justify-center items-center">
+					<div class="h-80 w-80 overflow-hidden rounded-full border-4 border-green-600">
+						<img src="./media/imgMe.png" alt="Imagen de Robert Carcolé"
+							class="h-full w-full object-cover object-center">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="mx-auto max-w-7xl py-24">
+			<p class="text-lg text-gray-50 px-2.5 py-0.5 rounded">
+				Resumen de la actividad en mi cuenta de <a href="https://www.github.com/rcarcole"
+					target="_blank"><b>GitHub</b></a> en el 2023:
+			</p>
+			<div class="mx-auto max-w-7xl py-16 lg:px-8">
+				<div class="relative isolate overflow-hidden bg-gray-900 px-6 shadow-2xl sm:rounded-3x1 sm:px-16">
+					<svg viewBox="0 0 1024 1024"
+						class="zindex-1 absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-y-1/2 [mask-image:radial-gradient(closest-side,white,transparent)] sm:left-full sm:-ml-80 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2 lg:translate-y-0"
+						aria-hidden="true">
+						<circle cx="512" cy="512" r="512" fill="url(#759c1415-0410-454c-8f7c-9a820de03641)"
+							fill-opacity="0.7" />
+						<defs>
+							<radialGradient id="759c1415-0410-454c-8f7c-9a820de03641">
+								<stop stop-color="#7775D6" />
+								<stop offset="1" stop-color="#E935C1" />
+							</radialGradient>
+						</defs>
+					</svg>
+					<div class="mx-auto max-w-md text-center mb-5 mt-5">
+						<video src="./media/unwrapped-rcarcole.mp4" controls></video>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="proyectos" class="bg-white imgFondo1">
+		<div class="mx-auto max-w-7xl py-24 sm:px-6 sm:py-32 lg:px-8">
+			<h2 class="text-3xl font-semibold me-2 px-2.5 py-0.5 rounded text-green-400 ms-2">Proyectos</h2>
+			<br>
+			<p class="text-lg font-normal px-2.5 py-0.5 rounded">Algunos de los proyectos más
+				llamativos en los que he trabajado por cuenta propia:</p>
+			<br><br>
+			<div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+				<div
+					class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 grow grow:hover">
+					<a href="https://myyummydough.com/home" target="_blank">
+						<img class="rounded-t-lg" src="/media/portfolioMyyummydough.png"
+							alt="pagina recetas para show project" />
+						<div class="p-5">
+							<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Aplicación
+								web full-stack sobre recetas de cocina</h5>
+							<p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+							<ul>
+								<li>HTML5</li>
+								<li>CSS3</li>
+								<li>Bootstrap 4</li>
+								<li>JS ES6</li>
+								<li>Angular 14</li>
+								<li>NodeJS</li>
+								<li>MongoDB</li>
+							</ul>
+							</p>
+						</div>
+					</a>
+				</div>
+				<div
+					class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 grow grow:hover">
+					<a href="https://www.capiolinfrastructure.com/" target="_blank">
+						<img class="rounded-t-lg" src="/media/portfolioCAPIOL.png"
+							alt="pagina capiol para show project" />
+						<div class="p-5">
+							<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Wordpress
+								para empresa</h5>
+							<p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+							<ul>
+								<li>CMS Wordpress</li>
+								<li>HTML5</li>
+								<li>CSS3</li>
+								<li>JS ES6</li>
+							</ul>
+							</p>
+						</div>
+					</a>
+				</div>
+				<div
+					class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 grow grow:hover">
+					<a href="https://singanddanceproject.com/" target="_blank">
+						<img class="rounded-t-lg" src="/media/portfolioSingAndDance.png"
+							alt="pagina singanddance para show project" />
+						<div class="p-5">
+							<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Wordpress
+								para empresa artística</h5>
+							<p class="mb-3 font-normal text-gray-700 dark:text-gray-400">CMS Wordpress</p>
+						</div>
+					</a>
+				</div>
+				<div
+					class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 grow grow:hover">
+					<a href="https://www.masrosello.com/" target="_blank">
+						<img class="rounded-t-lg" src="/media/portfolioMasRosello.png" alt="" />
+						<div class="p-5">
+							<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Wordpress
+								para Restaurante</h5>
+							<p class="mb-3 font-normal text-gray-700 dark:text-gray-400">CMS Wordpress</p>
+						</div>
+					</a>
+				</div>
+				<div
+					class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 grow grow:hover">
+					<a href="http://www.bazarpuerto.es/" target="_blank">
+						<img class="rounded-t-lg" src="/media/portfolioBazar.png"
+							alt="pagina bazarpuerto para show project" />
+						<div class="p-5">
+							<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Landpage
+								tienda de electrodomésticos</h5>
+							<p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+							<ul>
+								<li>HTML5</li>
+								<li>CSS3</li>
+								<li>Bootstrap 3</li>
+								<li>JS</li>
+								<li>JQuery 3</li>
+							</ul>
+							</p>
+						</div>
+					</a>
+				</div>
+				<div
+					class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 grow grow:hover">
+					<a href="https://main.d1oil6xu9dk71n.amplifyapp.com/" target="_blank">
+						<img class="rounded-t-lg" src="/media/portfolioTaskList.png"
+							alt="pagina taskList para show project" />
+						<div class="p-5">
+							<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Aplicación
+								web Full-Stack sobre lista de tareas</h5>
+							<p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+							<ul>
+								<li>HTML5</li>
+								<li>CSS3</li>
+								<li>Bootstrap 5</li>
+								<li>JS ES6</li>
+								<li>Angular 16</li>
+								<li>PHP8.2</li>
+								<li>MySQL</li>
+							</ul>
+							</p>
+						</div>
+					</a>
+				</div>
+				<div
+					class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 grow grow:hover">
+					<a href="https://www.rocarcoleso.com/ahorro" target="_blank">
+						<img class="rounded-t-lg" src="/media/salario.png"
+							alt="pagina taskList para show project" />
+						<div class="p-5">
+							<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Cálculo para ahorrar dinero</h5>
+							<p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+							<ul>
+								<li>HTML5</li>
+								<li>CSS3</li>
+								<li>JS ES6</li>
+							</ul>
+							</p>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="trabajosFormacion" class="bg-white imgFondo2">
+		<div class="flex p-3 mb-2">
+			<div class="w-1/2">
+				<div id="accordion-collapse" data-accordion="collapse" class="place-items-center"
+					style="display: grid; place-items: center;">
+					<h2 id="accordion-collapse-heading-1">
+						<button type="button"
+							class="flex items-center justify-between w-full hover:bg-gray-300 p-5 font-medium text-left text-gray-500 border border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-300 border-green-500"
+							data-accordion-target="#accordion-collapse-body-1" aria-expanded="false"
+							aria-controls="accordion-collapse-body-1">
+							<span>Trabajos realizados</span>
+							<svg data-accordion-icon class="w-6 h-6 shrink-0" fill="currentColor" viewBox="0 0 20 20"
+								xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd"
+									d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+									clip-rule="evenodd"></path>
+							</svg>
+						</button>
+					</h2>
+					<div id="accordion-collapse-body-1" class="hidden" aria-labelledby="accordion-collapse-heading-1">
+						<div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
+							<ol class="relative border-l border-gray-200 dark:border-gray-700">
+								<li class="mb-10 ml-4">
+									<div
+										class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700">
+									</div>
+									<time
+										class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">01/2023
+										-
+										04/2023</time>
+									<h3 class="text-lg font-semibold text-gray-900 dark:text-white">CAPIOL
+										INFRASTRUCTURE&ASSET
+										MANAGEMENT S.L, Barcelona</h3>
+									<p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">Prácticas de
+										Máster
+										desarrollando una web de cero en REACT usando<br>
+										HTML5, CSS3, JS ES6,
+										MySQL Workbench, PHP con framework LARAVEL para backend.
+									</p>
+								</li>
+								<li class="mb-10 ml-4">
+									<div
+										class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700">
+									</div>
+									<time
+										class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">10/2022
+										-
+										12-2022</time>
+									<h3 class="text-lg font-semibold text-gray-900 dark:text-white">BUGAMED MEDITERRANEA
+										S.L,
+										Reus
+									</h3>
+									<p class="text-base font-normal text-gray-500 dark:text-gray-400">Responsable de la
+										entrada
+										y
+										salida de género de la nave, organización y
+										orden de material para los clientes.
+									</p>
+								</li>
+								<li class="mb-10 ml-4">
+									<div
+										class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700">
+									</div>
+									<time
+										class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">03/2021
+										–
+										12-2021</time>
+									<h3 class="text-lg font-semibold text-gray-900 dark:text-white">TRIVIUM
+										QUADRIVIUMQUE
+										DIGITAL
+										S.L, Reus</h3>
+									<p class="text-base font-normal text-gray-500 dark:text-gray-400">Programador Full
+										Stack
+										usando
+										HTML5, CSS3 (Bootstrap),<br> JS (ES6, Jquery), PHP7(Symfony 3), MySQL,
+										GoogleAnalytics,
+										GoogleSearchConsole<br> en empresa dedicada a prensa con CMS propio, modificando
+										y
+										adaptando
+										código,<br> añadiendo
+										funcionalidades, creando funciones usando API’s externas para obtener datos,<br>
+										crear
+										gráficas,
+										API's de redes sociales, Google web stories, etc.</p>
+								</li>
+								<li class="mb-10 ml-4">
+									<div
+										class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700">
+									</div>
+									<time
+										class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">2019
+										-
+										2021</time>
+									<h3 class="text-lg font-semibold text-gray-900 dark:text-white">Freelance</h3>
+									<p class="text-base font-normal text-gray-500 dark:text-gray-400">Realización
+										páginas
+										web
+										(<a href="https://www.capiolinfrastructure.com/"
+											class="text-blue-600 dark:text-blue-500 hover:underline">capiolinfrastructure.com</a>,
+										<a href="https://www.singanddanceproject.com"
+											class="text-blue-600 dark:text-blue-500 hover:underline">singanddanceproject.com</a>,
+										<a href="https://www.masrosello.com"
+											class="text-blue-600 dark:text-blue-500 hover:underline">masrosello.com</a>,<br>
+										colaboración en <a href="https://www.bazarpuerto.es"
+											class="text-blue-600 dark:text-blue-500 hover:underline">bazarpuerto.es</a>).
+									</p>
+								</li>
+								<li class="mb-10 ml-4">
+									<div
+										class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700">
+									</div>
+									<time
+										class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">11/2018
+										-
+										03/2019</time>
+									<h3 class="text-lg font-semibold text-gray-900 dark:text-white">CIDE Xarxes i
+										telecomunicacions,
+										La Selva del Camp
+									</h3>
+									<p class="text-base font-normal text-gray-500 dark:text-gray-400">Administrador de
+										sistemas.
+										Prácticas del CFGS
+									</p>
+								</li>
+								<li class="mb-10 ml-4">
+									<div
+										class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700">
+									</div>
+									<time
+										class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">07/2017
+										-
+										11/2019</time>
+									<h3 class="text-lg font-semibold text-gray-900 dark:text-white">INSPECTORATE
+										ESPAÑOLA,
+										S.A,
+										Tarragona
+									</h3>
+									<p class="text-base font-normal text-gray-500 dark:text-gray-400">Realizar trabajos
+										consistentes
+										en control de calidad y cantidad <br> dentro de la
+										actividad cíclica intermitente de inspección de buques.
+									</p>
+								</li>
+								<li class="mb-10 ml-4">
+									<div
+										class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700">
+									</div>
+									<time
+										class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">06/2010
+										-
+										09/2010</time>
+									<h3 class="text-lg font-semibold text-gray-900 dark:text-white">EMPRESA MIXTA DE
+										AGUAS
+										DE
+										TARRAGONA, S.A. (EMATSA),
+										Tarragona
+									</h3>
+									<p class="text-base font-normal text-gray-500 dark:text-gray-400">Peón de apoyo a
+										los
+										oficiales
+										encargados en las tareas de mantenimiento de las instalaciones<br> de las
+										estaciones
+										remotas
+										de
+										control de red, así como de sus equipos de telecomandamientos<br> y
+										telecontroles y
+										del
+										centro
+										del control de red, incluyendo el mantenimiento del sistema<br> de comunicación
+										entre
+										los
+										distintos elementos.
+									</p>
+								</li>
+								<li class="mb-10 ml-4">
+									<div
+										class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700">
+									</div>
+									<time
+										class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">08/2009
+										-
+										09/2009</time>
+									<h3 class="text-lg font-semibold text-gray-900 dark:text-white">NAUTIC TARRAGONA SA,
+										Tarragona
+									</h3>
+									<p class="text-base font-normal text-gray-500 dark:text-gray-400">Auxiliar marinero.
+										Mantenimiento de limpieza en el Puerto Deportivo de Tarragona
+									</p>
+								</li>
+								<li class="mb-10 ml-4">
+									<div
+										class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700">
+									</div>
+									<time
+										class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">07/2009
+										-
+										08/2009</time>
+									<h3 class="text-lg font-semibold text-gray-900 dark:text-white">CONSTRUCCIONES Y
+										OBRAS
+										LOS
+										ALBERTOS, S.L.,
+										Tarragona
+									</h3>
+									<p class="text-base font-normal text-gray-500 dark:text-gray-400">Peón de apoyo
+										dentro
+										de la
+										empresa EMATSA.
+									</p>
+								</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="w-1/2">
+				<div id="accordion-collapse" data-accordion="collapse" class="place-items-center"
+					style="display: grid; place-items: center;">
+					<h2 id="accordion-collapse-heading-2">
+						<button type="button"
+							class="flex items-center justify-between w-full hover:bg-gray-300 p-5 font-medium text-left text-gray-500 border border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-300 border-green-500"
+							data-accordion-target="#accordion-collapse-body-2" aria-expanded="false"
+							aria-controls="accordion-collapse-body-2">
+							<span>Formación</span>
+							<svg data-accordion-icon class="w-6 h-6 shrink-0" fill="currentColor" viewBox="0 0 20 20"
+								xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd"
+									d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+									clip-rule="evenodd"></path>
+							</svg>
+						</button>
+					</h2>
+					<div id="accordion-collapse-body-2" class="hidden" aria-labelledby="accordion-collapse-heading-2">
+						<div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
+							<ol class="relative border-l border-gray-200 dark:border-gray-700">
+								<li class="mb-10 ml-4">
+									<div
+										class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700">
+									</div>
+									<time
+										class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">01/2022
+										-
+										08/2022</time>
+									<h3 class="text-lg font-semibold text-gray-900 dark:text-white">TokioSchool</h3>
+									<p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">Máster en
+										Programación
+										web
+										Front-End: HTML5, CSS3 y Javascript.</p>
+									<a href="https://www.tokioschool.com/formaciones/cursos-programacion/front-end/?_gl=1*18qkpd8*_up*MQ..&gclid=Cj0KCQjwuLShBhC_ARIsAFod4fIo0hJRZJ3h9eY5W2YBQEUw4RmTJmkKyLgioFzPxdRzg0EQjIuROkcaAujpEALw_wcB"
+										class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-200 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700">Más
+										información <svg class="w-3 h-3 ml-2" fill="currentColor" viewBox="0 0 20 20"
+											xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd"
+												d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+												clip-rule="evenodd"></path>
+										</svg></a>
+								</li>
+								<li class="mb-10 ml-4">
+									<div
+										class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700">
+									</div>
+									<time
+										class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">2019
+										-
+										2023</time>
+									<h3 class="text-lg font-semibold text-gray-900 dark:text-white">SASE formación
+									</h3>
+									<p class="text-base font-normal text-gray-500 dark:text-gray-400">Aprendiendo por
+										cuenta
+										propia
+										y formación no reglada Desarrollo de Aplicaciones Web</p>
+								</li>
+								<li class="mb-10 ml-4">
+									<div
+										class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700">
+									</div>
+									<time
+										class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">2020</time>
+									<h3 class="text-lg font-semibold text-gray-900 dark:text-white">MOOC</h3>
+									<p class="text-base font-normal text-gray-500 dark:text-gray-400">Introducción al
+										Análisis
+										del
+										Malware en Windows (Facultad Regional Buenos Aires, patrocinado Telefónica).</p>
+								</li>
+								<li class="mb-10 ml-4">
+									<div
+										class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700">
+									</div>
+									<time
+										class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">2014
+										-
+										2018</time>
+									<h3 class="text-lg font-semibold text-gray-900 dark:text-white">Institut Obert de
+										Catalunya
+										(IOC)</h3>
+									<p class="text-base font-normal text-gray-500 dark:text-gray-400">Ciclo Formativo de
+										Grado
+										Superior de Administración de Sistemas Informáticos en Red</p>
+								</li>
+								<li class="mb-10 ml-4">
+									<div
+										class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700">
+									</div>
+									<time
+										class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">2009
+										-
+										2011</time>
+									<h3 class="text-lg font-semibold text-gray-900 dark:text-white">Salesians de Sarrià,
+										Barcelona
+									</h3>
+									<p class="text-base font-normal text-gray-500 dark:text-gray-400">1er curso de Ciclo
+										Formativo
+										de Grado Superior de Sistemas de Telecomunicaciones e Informáticos</p>
+								</li>
+								<li class="mb-10 ml-4">
+									<div
+										class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700">
+									</div>
+									<time
+										class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">2007
+										-
+										2009</time>
+									<h3 class="text-lg font-semibold text-gray-900 dark:text-white">Santa Isabel,
+										Barcelona
+									</h3>
+									<p class="text-base font-normal text-gray-500 dark:text-gray-400">1er curso de
+										Bachillerato
+										Tecnológico</p>
+								</li>
+								<li class="mb-10 ml-4">
+									<div
+										class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700">
+									</div>
+									<time
+										class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">2001
+										-
+										2006</time>
+									<h3 class="text-lg font-semibold text-gray-900 dark:text-white">Santa Teresa de
+										Jesús,
+										Barcelona.</h3>
+									<p class="text-base font-normal text-gray-500 dark:text-gray-400">Título de
+										Educación
+										Secundaria
+										Obligatoria (E.S.O)</p>
+								</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="habilidades" class="flex imgFondo1">
+		<div class="max-w-7xl mx-auto py-24 sm:px-6 sm:py-32 lg:px-8 ">
+			<h2 class="text-3xl font-semibold me-2 px-2.5 py-0.5 rounded text-green-400 ms-2">Habilidades</h2>
+			<br>
+			<p class="text-lg font-normal px-2.5 py-0.5 rounded">Estas son algunas de las
+				habilidades que he ido adquiriendo a lo largo de mi vida profesional:</p>
+			<br><br><br><br>
+			<div>
+				<div class="grid md:grid-cols-5 gap-4 text-center px-4">
+					<div class="text-7xl tooltip fa-brands fa-html5 cursor-pointer grow grow:hover">
+						<span class="text-xs tooltiptext">HTML5</span>
+					</div>
+					<div class="text-7xl tooltip fa-brands fa-css3 cursor-pointer grow grow:hover">
+						<span class="text-xs tooltiptext">CSS3</span>
+					</div>
+					<div class="text-7xl tooltip fa-brands fa-js cursor-pointer grow grow:hover">
+						<span class="text-xs tooltiptext">JavaScript ES6</span>
+					</div>
+					<div class="text-7xl tooltip fa-brands fa-react cursor-pointer grow grow:hover">
+						<span class="text-xs tooltiptext">REACT</span>
+					</div>
+					<div class="text-7xl tooltip fa-brands fa-node cursor-pointer grow grow:hover">
+						<span class="text-xs tooltiptext">NodeJS</span>
+					</div>
+				</div><br><br><br>
+				<div class="grid md:grid-cols-5 gap-4 text-center">
+					<div class="text-7xl tooltip fa-brands fa-php cursor-pointer grow grow:hover">
+						<span class="text-xs tooltiptext">PHP 7/8</span>
+					</div>
+					<div class="text-7xl tooltip fa-brands fa-laravel cursor-pointer grow grow:hover">
+						<span class="text-xs tooltiptext">Laravel 9/10</span>
+					</div>
+					<div class="text-7xl tooltip fa-brands fa-linux cursor-pointer grow grow:hover">
+						<span class="text-xs tooltiptext">Linux</span>
+					</div>
+					<div class="text-7xl tooltip fa-brands fa-windows cursor-pointer grow grow:hover">
+						<span class="text-xs tooltiptext">Windows 7/8.1/10/11</span>
+					</div>
+					<div class="text-7xl tooltip fa-solid fa-database cursor-pointer grow grow:hover">
+						<span class="text-xs tooltiptext">MySQL</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer id="redesSociales" class="flex imgFondo2 pb-16 pt-16">
+		<div class="px-4 py-12 mx-auto overflow-hidden max-w-7xl sm:px-6 lg:px-8">
+			<div class="flex justify-center mt-8 space-x-6 text-gray-50">
+				<span class="inline-flex justify-center w-full gap-3 m-auto md:justify-start md:w-auto">
+					<a href="https://github.com/rcarcole" class="w-6 h-6 transition fill-black hover:text-blue-500"
+						target="_blank">
+						<span class="sr-only">
+							github
+						</span>
+						<ion-icon class="w-5 h-5 md hydrated" name="logo-github" role="img"
+							aria-label="logo github"></ion-icon>
+					</a>
+					<a href="https://www.linkedin.com/in/robert-carcol%C3%A9-solanes-1251b7235/"
+						class="w-6 h-6 transition fill-black hover:text-blue-500" target="_blank">
+						<span class="sr-only">
+							Linkedin
+						</span>
+						<ion-icon class="w-5 h-5 md hydrated" name="logo-linkedin" role="img"
+							aria-label="logo linkedin"></ion-icon>
+					</a>
+				</span>
+			</div>
+			<p class="mt-8 text-center pt-80">
+				<span class="text-lg text-gray-50 px-2.5 py-0.5 rounded mx-auto mt-2 text-sm text-gray-50">
+					Sin copyright © 2023 en <a href="#" class="font-bold text-gray-900">rocarcoleso.com</a> no
+					tengo
+					ningún derecho reservado, apoyo el código abierto y acceso gratuito a la información :)
+				</span>
+			</p>
+		</div>
+	</footer>
+	<script src="/js/app.js"></script>
+</body>
+
+</html>

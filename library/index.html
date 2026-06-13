@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mi biblioteca</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Spectral:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="brand">
+      <span class="kicker">Registro de lecturas</span>
+      <h1 id="title" contenteditable="true" spellcheck="false">Mi biblioteca</h1>
+    </div>
+    <div class="meta" id="masthead-meta"></div>
+  </header>
+
+  <div class="layout">
+    <main>
+      <div class="controls">
+        <div class="search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <input id="q" type="search" placeholder="Buscar título o autor…">
+        </div>
+        <select id="f-genero"></select>
+        <select id="f-idioma"></select>
+        <select id="sort">
+          <option value="id">Ordenar: Nº lista</option>
+          <option value="titulo">Ordenar: Título</option>
+          <option value="autor">Ordenar: Autor</option>
+          <option value="paginas">Ordenar: Páginas</option>
+          <option value="valoracion">Ordenar: Valoración</option>
+          <option value="anio">Ordenar: Año</option>
+        </select>
+        <button class="btn dir" id="dir" title="Cambiar dirección">↓</button>
+        <button class="btn btn-add" id="add">+ Añadir libro</button>
+      </div>
+      <div class="list" id="list"></div>
+    </main>
+
+    <aside>
+      <div class="panel">
+        <h2>Recuento</h2>
+        <div class="bigstat"><div class="v" id="s-total">0</div><div class="k">libros leídos</div></div>
+        <div class="stat"><span class="k">Páginas (con dato)</span><span class="v" id="s-pag">0</span></div>
+        <div class="stat"><span class="k">Con nº de páginas</span><span class="v" id="s-conpag">0</span></div>
+        <div class="stat"><span class="k">Incógnitas (x)</span><span class="v" id="s-inc">0</span></div>
+        <div class="stat"><span class="k">Media de páginas</span><span class="v" id="s-media">0</span></div>
+        <div class="stat"><span class="k">Valoración media</span><span class="v" id="s-nota">—</span></div>
+        <div class="showing" id="s-showing"></div>
+        <button class="btn reset" id="reset">Restablecer mis cambios</button>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- modal -->
+<div class="backdrop" id="backdrop">
+  <div class="modal">
+    <div class="modal-h"><h3 id="m-title">Editar libro</h3><button class="edit" id="m-close" style="font-size:22px">✕</button></div>
+    <div class="modal-b">
+      <div class="field full"><label>Título</label><input id="m-titulo"></div>
+      <div class="field full"><label>Autor</label><input id="m-autor"></div>
+      <div class="field"><label>Páginas (vacío = incógnita)</label><input id="m-paginas" type="number" min="0"></div>
+      <div class="field"><label>Origen del dato</label>
+        <select id="m-origen"><option value="foto">foto</option><option value="buscada">buscada</option><option value="incógnita">incógnita</option></select>
+      </div>
+      <div class="field"><label>Año (leído)</label><input id="m-anio" type="number" min="0" max="2100" placeholder="—"></div>
+      <div class="field"><label>Valoración (0–10)</label><input id="m-valoracion" type="number" min="0" max="10" step="1" placeholder="—"></div>
+      <div class="field"><label>Idioma</label><input id="m-idioma" list="lang-list"></div>
+      <div class="field"><label>Género</label><input id="m-genero" list="gen-list"></div>
+      <div class="field full"><label>Portada (URL — opcional, para corregir la automática)</label><input id="m-cover" placeholder="https://…"></div>
+      <div class="field full"><label>Notas</label><textarea id="m-notas"></textarea></div>
+      <div class="hint">Tus cambios se guardan en este navegador. La portada se busca sola; si sale mal, pega aquí la URL de una imagen.</div>
+    </div>
+    <div class="modal-f">
+      <button class="btn btn-del" id="m-del">Eliminar</button>
+      <div class="right-btns">
+        <button class="btn" id="m-cancel">Cancelar</button>
+        <button class="btn btn-save" id="m-save">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<datalist id="lang-list"></datalist>
+<datalist id="gen-list"></datalist>
+<div id="cover-preview"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

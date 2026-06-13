@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahorro</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div class="top">
+            <div></div>
+            <div class="money">
+                Ahorro sobre: &nbsp;
+                <div class="input-container">
+                    <input type="text" class="input-valor" id="ingreso">
+                    <span class="currency-symbol">€</span>
+                </div> &nbsp; netos
+            </div>
+        </div>
+        <div class="mid">
+            <div class="needs">
+                <div class="containerTitle">
+                    <h4 class="spacer">NECESIDADES 50%</h4>
+                    <input type="text" class="input-valor spacer" id="necesidades" readonly>
+                    <span class="currency-symbol spacer">€</span>
+                </div>
+                <div>
+                    <ul>
+                        <li>Alquiler, basuras, comunidad.
+                            <div class="input-container">
+                                <input type="text" class="input-valor" id="alquiler">
+                                <span class="currency-symbol">€</span>
+                            </div>
+                        </li>
+                        <li>Electricidad, gas, teléfono, internet<br />agua
+                            <div class="input-container">
+                                <input type="text" class="input-valor" id="servicios">
+                                <span class="currency-symbol">€</span>
+                            </div>
+                        </li>
+                        <li>Compra de alimentos <br />productos para el hogar.
+                            <div class="input-container">
+                                <input type="text" class="input-valor" id="alimentacion">
+                                <span class="currency-symbol">€</span>
+                            </div>
+                        </li>
+                        <li>Gasolina, mantenimiento del coche<br />transporte público.
+                            <div class="input-container">
+                                <input type="text" class="input-valor" id="transporte">
+                                <span class="currency-symbol">€</span>
+                            </div>
+                        </li>
+                        <li>Seguro de salud
+                            <div class="input-container">
+                                <input type="text" class="input-valor" id="">
+                                <span class="currency-symbol">€</span>
+                            </div>
+                        </li>
+                        <li>Préstamos o deudas mínimas<br /> requeridas
+                            <div class="input-container">
+                                <input type="text" class="input-valor" id="">
+                                <span class="currency-symbol">€</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="div10">
+
+                    <div class="input-container centered" style="margin: 15px;">
+                        <input type="text" class="input-valor centered" id="restoNecesidades" readonly>
+                        <span class="currency-symbol centered">€</span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="desires">
+                <div class="containerTitle">
+                    <h4 class="spacer">DESEOS 30%</h4>
+                    <input type="text" class="input-valor spacer" id="deseos" readonly>
+                    <span class="currency-symbol spacer">€</span>
+                </div>
+                <div>
+                    <ul>
+                        <li>Comida y cena fuera de casa.
+                            <div class="input-container">
+                                <input type="text" class="input-valor" id="alquiler">
+                                <span class="currency-symbol">€</span>
+                            </div>
+                        </li>
+                        <li>Tomar algo con amigos, <br />cine, conciertos, bolera.
+                            <div class="input-container">
+                                <input type="text" class="input-valor" id="servicios">
+                                <span class="currency-symbol">€</span>
+                            </div>
+                        </li>
+                        <li>Gimnasio o actividades deportivas.
+                            <div class="input-container">
+                                <input type="text" class="input-valor" id="alimentacion">
+                                <span class="currency-symbol">€</span>
+                            </div>
+                        </li>
+                        <li>Suscripciones a servicios de <br />streaming, Netflix, Filmin, XboxPass
+                            <div class="input-container">
+                                <input type="text" class="input-valor" id="transporte">
+                                <span class="currency-symbol">€</span>
+                            </div>
+                        </li>
+                        <li>Ropa, gadgets (consolas,<br /> móviles, Alexa…)
+                            <div class="input-container">
+                                <input type="text" class="input-valor" id="">
+                                <span class="currency-symbol">€</span>
+                            </div>
+                        </li>
+                        <li>Viajes cortos o escapadas de <br />fin de semana.
+                            <div class="input-container">
+                                <input type="text" class="input-valor" id="">
+                                <span class="currency-symbol">€</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="div11">
+
+                    <div class="input-container centered" style="margin: 15px;">
+                        <input type="text" class="input-valor centered" id="restoDeseos" readonly>
+                        <span class="currency-symbol centered">€</span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="savings">
+                <div class="containerTitle">
+                    <h4 class="spacer">AHORRO 20%</h4>
+                    <input type="text" class="input-valor spacer" id="ahorro" readonly>
+                    <span class="currency-symbol spacer">€</span>
+                </div>
+                <div>
+                    <ul>
+                        <li>Fondo de emergencia: idealmente,<br />deberías apuntar a tener<br /> ahorrado el
+                            equivalente
+                            a <br />3-6
+                            meses de gastos<br /> en necesidades.
+                            <div class="input-container">
+                                <input type="text" class="input-valor" id="alquiler">
+                                <span class="currency-symbol">€</span>
+                            </div>
+                        </li>
+                        <li>Ahorro para objetivos<br />a largo plazo: compra<br />de una vivienda, educación.
+                            <div class="input-container">
+                                <input type="text" class="input-valor" id="servicios">
+                                <span class="currency-symbol">€</span>
+                            </div>
+                        </li>
+                        <li>Planes de retiro:<br />contribuciones a planes de<br />pensiones o inversiones.
+                            <div class="input-container">
+                                <input type="text" class="input-valor" id="alimentacion">
+                                <span class="currency-symbol">€</span>
+                            </div>
+                        </li>
+                        <li>Ahorro para objetivos<br />a corto plazo: vacaciones,<br />compra de un coche nuevo.
+                            <div class="input-container">
+                                <input type="text" class="input-valor" id="transporte">
+                                <span class="currency-symbol">€</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="div12">
+
+                    <div class="input-container centered" style="margin: 15px;">
+                        <input type="text" class="input-valor centered" id="restoAhorros" readonly>
+                        <span class="currency-symbol centered">€</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="bot">
+        </div>
+
+        <footer>
+            <div>
+                <h3>Cálculo de tu Salario Neto: <a
+                        href="https://cincodias.elpais.com/herramientas/calculadora-sueldo-neto/#tabla_resultados"
+                        target="_blank">pincha aquí</a></h3>
+            </div>
+        </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- <div class="parent">
+        <div class="div1">Ahorro sobre:
+            <div class="input-container">
+                <input type="text" class="input-valor" id="ingreso">
+                <span class="currency-symbol">€</span>
+            </div> &nbsp netos
+        </div>
+        <div class="div2">NECESIDADES 50%
+            <div class="input-container">
+                <input type="text" class="input-valor" id="necesidades" readonly>
+                <span class="currency-symbol">€</span>
+            </div>
+        </div>
+        <div class="div3">DESEOS 30%
+            <div class="input-container">
+                <input type="text" class="input-valor" id="deseos" readonly>
+                <span class="currency-symbol">€</span>
+            </div>
+        </div>
+        <div class="div4">AHORRO 20%
+            <div class="input-container">
+                <input type="text" class="input-valor" id="ahorro" readonly>
+                <span class="currency-symbol">€</span>
+            </div>
+        </div>
+        
+        <div class="div5">
+            <ul>
+                <li>Alquiler
+                    <div class="input-container"><input type="text" class="input-valor" id="alquiler"><span class="currency-symbol">€</span></div>
+                </li>
+                <li>Servicios básicos: electricidad, gas, teléfono, internet.
+                    <div class="input-container"><input type="text" class="input-valor" id="servicios"><span class="currency-symbol">€</span></div>
+                </li>
+                <li>Alimentación: compra de alimentos y productos esenciales para el hogar.
+                    <div class="input-container"><input type="text" class="input-valor" id="alimentacion"><span class="currency-symbol">€</span></div>
+                </li>
+                <li>Transporte: gasolina, mantenimiento del vehículo, seguro del coche o transporte público.
+                    <div class="input-container"><input type="text" class="input-valor" id="transporte"><span class="currency-symbol">€</span></div>
+                </li>
+                <li>Seguro de salud (si no está proporcionado por tu empleador o si necesitas cobertura
+                    adicional).
+                    <div class="input-container"><input type="text" class="input-valor" id=""><span class="currency-symbol">€</span></div>
+                </li>
+                <li>Préstamos o deudas mínimas requeridas (por ejemplo, pago de préstamos estudiantiles).
+                    <div class="input-container"><input type="text" class="input-valor" id=""><span class="currency-symbol">€</span></div>
+                </li>
+            </ul>
+        </div>
+        <div class="div6">
+            <ul>
+                <li>Comida y cena fuera de casa.
+                    <div class="input-container"><input type="text" class="input-valor" id="cena"><span class="currency-symbol">€</span></div>
+                </li>
+                <li>Actividades de ocio: tomar algo con amigos, cine, conciertos, bolera.
+                    <div class="input-container"><input type="text" class="input-valor" id="cine"><span class="currency-symbol">€</span></div>
+                </li>
+                <li>Gimnasio o actividades deportivas.
+                    <div class="input-container"><input type="text" class="input-valor" id="gym"><span class="currency-symbol">€</span></div>
+                </li>
+                <li>Suscripciones a servicios de streaming, Netflix, Filmin, XboxPass
+                    <div class="input-container"><input type="text" class="input-valor" id="streaming"><span class="currency-symbol">€</span></div>
+                </li>
+                <li>Ropa, gadgets (consolas, móviles, Alexa…)
+                    <div class="input-container"><input type="text" class="input-valor" id="ropa"><span class="currency-symbol">€</span></div>
+                </li>
+                <li>Viajes cortos o escapadas de fin de semana.
+                    <div class="input-container"><input type="text" class="input-valor" id="viajes"><span class="currency-symbol">€</span></div>
+                </li>
+            </ul>
+        </div>
+        <div class="div7">
+            <ul>
+                <li>Fondo de emergencia: idealmente, deberías apuntar a tener ahorrado el equivalente a 3-6 meses de
+                    gastos en necesidades.</li>
+                <li>Ahorro para objetivos a largo plazo: compra de una vivienda, educación.</li>
+                <li>Planes de retiro: contribuciones a planes de pensiones o inversiones.</li>
+                <li>Ahorro para objetivos a corto plazo: vacaciones, compra de un coche nuevo.</li>
+            </ul>
+        </div>
+        <div class="div8">
+            <ul>
+                <li></li>
+            </ul>
+        </div>
+        <div class="div9">
+            <ul>
+                <li></li>
+            </ul>
+        </div>
+        <div class="div10">
+            <ul>
+                <li>
+                    <div class="input-container">
+                        <input type="text" class="input-valor" id="restoNecesidades" readonly>
+                        <span class="currency-symbol">€</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="div11">
+            <ul>
+                <li>
+                    <div class="input-container">
+                        <input type="text" class="input-valor" id="restoDeseos" readonly>
+                        <span class="currency-symbol">€</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="div12">
+            <ul>
+                <li>
+                    <div class="input-container">
+                        <input type="text" class="input-valor" id="restoAhorros" readonly>
+                        <span class="currency-symbol">€</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div> -->
+        <!-- <footer>
+        <div>
+            <h3>Cálculo de tu Salario Neto: <a href="https://cincodias.elpais.com/herramientas/calculadora-sueldo-neto/#tabla_resultados" target="_blank">pincha aquí</a></h3>
+        </div>
+    </footer> -->
+        <script src="./app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,192 @@
+@import "./node_modules/tailwindcss/base.css";
+@import "./node_modules/tailwindcss/components.css";
+@import "./node_modules/tailwindcss/utilities.css";
+
+body {
+	font-family: sans-serif;
+	margin: 0px;
+}
+
+.menu {
+	position: fixed;
+	z-index: 1;
+	background-image: url("https://www.toptal.com/designers/subtlepatterns/uploads/denim.png");
+	color: rgb(249 250 251);
+	border: solid rgba(4, 170, 109, 0.4);
+}
+
+.grow {
+	transition: all 0.2s ease-in-out;
+}
+
+.grow:hover {
+	transform: scale(1.1);
+}
+
+.active {
+	background-color: #4b5563;
+	color: rgb(249 250 251);
+	border-radius: 5px;
+	padding: 5px 10px;
+}
+
+.tooltip {
+	position: relative;
+	display: inline-block;
+}
+
+.tooltip .tooltiptext {
+	width: 120px;
+	background-color: #555;
+	color: #fff;
+	text-align: center;
+	border-radius: 10px;
+	padding: 5px 0;
+	position: absolute;
+	z-index: 1;
+	bottom: -63%;
+	left: 50%;
+	margin-left: -60px;
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+	content: "";
+	position: absolute;
+	top: -35%;
+	left: 50%;
+	margin-left: -5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: transparent transparent #555 transparent;
+}
+
+.tooltip:hover .tooltiptext {
+	visibility: visible;
+	opacity: 1;
+}
+
+@media (max-width: 768px) {
+	.tooltip .tooltiptext {
+		width: 80px;
+		top: 50%;
+		bottom: auto;
+		left: 66%;
+		margin-left: 0px;
+		margin-top: -14px;
+	}
+
+	.tooltip .tooltiptext::after {
+		top: 50%;
+		left: -5px;
+		margin-top: -5px;
+		border-color: transparent #555 transparent transparent;
+	}
+	.title {
+		font-size: 24px;
+	}
+	.textCentered {
+		margin-left: 3rem;
+	}
+	
+	#trabajosFormacion .flex {
+        flex-direction: column;
+		margin: 1rem 0;
+    }
+
+    #trabajosFormacion .w-1\/2 {
+        width: 100%;
+    }
+
+    #accordion-collapse-body-1, #accordion-collapse-body-2 {
+        max-height: none;
+        overflow: visible;
+    }
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+.title {
+	font-weight: 600;
+	font-size: 48px;
+	padding: 16px;
+	text-align: center;
+}
+
+.content {
+	display: grid;
+	grid-template-rows: 0fr;
+	transition: 0.3s grid-template-rows ease-in-out;
+}
+
+.w-1\/2:hover .content {
+	grid-template-rows: 1fr;
+}
+
+.content > div {
+	overflow: hidden;
+}
+
+.ml-18 {
+	margin-left: 4.5rem;
+}
+
+#mainNav li a:hover {
+	background-color: #4b5563;
+	color: #fff;
+	border-radius: 5px;
+}
+
+#mainNav li a {
+	transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.content.active {
+	display: grid;
+}
+
+.imgFondo1 {
+	background-image: url("https://www.toptal.com/designers/subtlepatterns/uploads/45degreee_fabric.png");
+	background-attachment: fixed;
+}
+
+.imgFondo2 {
+	background-image: url("https://www.toptal.com/designers/subtlepatterns/uploads/denim.png");
+	background-attachment: fixed;
+}
+.blanco {
+	color: #fff;
+}
+
+.negro {
+	color: #000000;
+}
+
+.buttonDownloadCV {
+	background: black;
+	color: white;
+	border: 3px solid #04aa6d;
+}
+
+.zindex-1 {
+	z-index: -1;
+}
+
+.nombre {
+	background-image: linear-gradient(
+		135deg,
+		#06c67f 0%,
+		#07a46a 35%,
+		#058255 85%,
+		#034a30 100%
+	);
+	-webkit-text-fill-color: transparent;
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: #fff;
+}
