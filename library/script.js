@@ -76,7 +76,7 @@ function render(){
     const info=document.createElement('div');info.className='info';
     info.innerHTML='<p class="title">'+esc(b.titulo)+'</p>'+
       '<p class="author">'+esc(b.autor||'—')+'</p>'+
-      '<div class="chips">'+pg+chip(b.origen,'o-'+b.origen)+chip(b.genero)+chip(b.idioma)+
+      '<div class="chips">'+pg+chip(b.genero)+chip(b.idioma)+
       (b.anio?chip('Año '+b.anio):'')+'</div>';
     const right=document.createElement('div');right.className='right';
     right.innerHTML=rate+'<button class="edit" title="Editar">'+
@@ -128,7 +128,6 @@ function openModal(id){
   $('m-title').textContent=id==null?'Añadir libro':'Editar libro';
   $('m-titulo').value=b.titulo||'';$('m-autor').value=b.autor||'';
   $('m-paginas').value=(b.paginas==null?'':b.paginas);
-  $('m-origen').value=b.origen||'incógnita';
   $('m-anio').value=b.anio||'';$('m-valoracion').value=(b.valoracion===''||b.valoracion==null)?'':b.valoracion;
   $('m-idioma').value=b.idioma||'';$('m-genero').value=b.genero||'';
   $('m-cover').value=(overrides[id]||{}).coverUrl||'';
@@ -142,7 +141,7 @@ function saveModal(){
   if(val!==''){val=Math.max(0,Math.min(10,Math.round(+val)));}
   let pg=$('m-paginas').value.trim();pg=pg===''?'':Math.max(0,Math.round(+pg));
   const rec={titulo:$('m-titulo').value.trim(),autor:$('m-autor').value.trim(),
-    paginas:pg,origen:$('m-origen').value,anio:$('m-anio').value.trim(),
+    paginas:pg,anio:$('m-anio').value.trim(),
     valoracion:val,idioma:$('m-idioma').value.trim(),genero:$('m-genero').value.trim(),
     notas:$('m-notas').value.trim()};
   const cover=$('m-cover').value.trim();

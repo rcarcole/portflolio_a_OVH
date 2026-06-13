@@ -80,9 +80,6 @@ select:focus{outline:2px solid var(--gold)}
 .chip{font-size:11.5px;letter-spacing:.02em;padding:3px 8px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--ink);white-space:nowrap}
 .chip.pg{font-variant-numeric:tabular-nums}
 .chip.x{color:#fff;background:var(--burgundy);border-color:var(--burgundy);font-weight:700}
-.chip.o-foto{border-color:#9fb39a;background:#eaf0e7;color:#3c5638}
-.chip.o-buscada{border-color:#cdb78a;background:#f3ead2;color:#7b5d2a}
-.chip.o-incógnita{border-color:#d9a3a3;background:#f4e2e2;color:#7d2b2b}
 .right{display:flex;align-items:center;gap:12px}
 .rating{font-family:"Fraunces";font-weight:600;min-width:52px;text-align:center;font-variant-numeric:tabular-nums}
 .rating .num{font-size:20px}
