@@ -1,9 +1,9 @@
 <?php
 /* ==========================================================================
-   Almacén compartido de "Mi biblioteca".
-   Guarda y devuelve un JSON en el servidor, para que todos los dispositivos
-   vean y editen lo mismo. Súbelo a la MISMA carpeta que index.html.
-   ========================================================================== */
+Almacén compartido de "Mi biblioteca".
+Guarda y devuelve un JSON en el servidor, para que todos los dispositivos
+vean y editen lo mismo. Súbelo a la MISMA carpeta que index.html.
+========================================================================== */
 declare(strict_types=1);
 
 // 1) Cambia este token por algo tuyo y pon EXACTAMENTE el mismo en script.js
