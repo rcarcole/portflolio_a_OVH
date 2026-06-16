@@ -28,6 +28,7 @@
         </div>
         <select id="f-genero"></select>
         <select id="f-idioma"></select>
+        <select id="f-nacionalidad"></select>
         <select id="sort">
           <option value="id">Ordenar: Nº lista</option>
           <option value="titulo">Ordenar: Título</option>
@@ -52,7 +53,7 @@
         <div class="stat"><span class="k">Media de páginas</span><span class="v" id="s-media">0</span></div>
         <div class="stat"><span class="k">Valoración media</span><span class="v" id="s-nota">—</span></div>
         <div class="showing" id="s-showing"></div>
-        <button class="btn reset" id="reset">Restablecer mis cambios</button>
+        <button class="btn reset" id="reset">Sincronizar / recargar</button>
       </div>
     </aside>
   </div>
@@ -70,6 +71,7 @@
       <div class="field"><label>Valoración (0–10)</label><input id="m-valoracion" type="number" min="0" max="10" step="1" placeholder="—"></div>
       <div class="field"><label>Idioma</label><input id="m-idioma" list="lang-list"></div>
       <div class="field"><label>Género</label><input id="m-genero" list="gen-list"></div>
+      <div class="field full"><label>Nacionalidad del autor</label><input id="m-nacionalidad" list="nat-list"></div>
       <div class="field full"><label>Portada (URL — opcional, para corregir la automática)</label><input id="m-cover" placeholder="https://…"></div>
       <div class="field full"><label>Notas</label><textarea id="m-notas"></textarea></div>
       <div class="hint">Tus cambios se guardan en este navegador. La portada se busca sola; si sale mal, pega aquí la URL de una imagen.</div>
@@ -85,6 +87,7 @@
 </div>
 <datalist id="lang-list"></datalist>
 <datalist id="gen-list"></datalist>
+<datalist id="nat-list"></datalist>
 <div id="cover-preview"></div>
 
 <script src="script.js"></script>
