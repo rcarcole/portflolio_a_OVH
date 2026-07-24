@@ -22,6 +22,8 @@ ErrorDocument 404 /error404.html
 </IfModule>
 
 # --- Bloquear acceso directo a ficheros sensibles ---
-<FilesMatch "^\.(htaccess|htpasswd|git)">
+<FilesMatch "^\.(htaccess|htpasswd)">
     Require all denied
 </FilesMatch>
+# Bloquea toda la carpeta .git (código e historial) si el deploy la deja en www
+RedirectMatch 404 /\.git(/|$)
