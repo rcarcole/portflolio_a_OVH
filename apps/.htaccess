@@ -1,0 +1,13 @@
+# ==========================================================================
+# ZONA PRIVADA — protege /zhara, /library y /ahorro con usuario y contraseña.
+# ==========================================================================
+AuthType Basic
+AuthName "Zona privada"
+
+# >>> IMPORTANTE (1 sola vez tras subir a OVH) <<<
+# Apache necesita la RUTA ABSOLUTA del servidor hasta este .htpasswd.
+# Para averiguarla: sube todo, visita UNA vez  https://TUDOMINIO/apps/_path.php
+# copia lo que imprime y pégalo justo debajo sustituyendo esta línea.
+AuthUserFile "/home/CAMBIAME/apps/.htpasswd"
+
+Require valid-user

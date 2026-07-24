@@ -1,0 +1,10 @@
+# Impide el acceso directo por URL al fichero de datos.
+# La app sigue leyéndolo a través de api.php (server-side), no directamente.
+<Files "library-data.json">
+    Require all denied
+</Files>
+
+# Bloquea también cualquier .tmp que deje la escritura atómica
+<FilesMatch "\.tmp$">
+    Require all denied
+</FilesMatch>

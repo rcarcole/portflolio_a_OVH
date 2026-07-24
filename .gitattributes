@@ -1,0 +1,19 @@
+# Normaliza saltos de línea. Apache es sensible a CRLF en .htpasswd/.htaccess.
+* text=auto eol=lf
+
+# Fuerza LF explícito en lo que interpreta el servidor
+.htaccess       text eol=lf
+.htpasswd       text eol=lf
+*.php           text eol=lf
+*.html          text eol=lf
+*.css           text eol=lf
+*.js            text eol=lf
+
+# Binarios: no tocar
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.svg  binary
+*.webp binary
+*.mp4  binary
+*.pdf  binary

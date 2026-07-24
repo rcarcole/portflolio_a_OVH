@@ -1,0 +1,14 @@
+# Dependencias (ya no se usan: todo va por CDN). Se ignoran por si acaso.
+node_modules/
+
+# Datos generados por las apps en el servidor
+**/*-data.json
+
+# Entorno / secretos
+.env
+.env.*
+
+# Sistema
+.DS_Store
+Thumbs.db
+*.log
