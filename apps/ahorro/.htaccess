@@ -1,0 +1,4 @@
+# /ahorro es PÚBLICO: anula la contraseña que hereda de /apps.
+# (Require all granted sustituye al Require valid-user del .htaccess padre.)
+Satisfy any
+Require all granted
