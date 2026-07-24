@@ -7,6 +7,9 @@ node_modules/
 # Entorno / secretos
 .env
 .env.*
+# Contraseñas Basic Auth: nunca al repo (van al servidor por FTP, fuera de www)
+.htpasswd
+**/.htpasswd
 
 # Sistema
 .DS_Store

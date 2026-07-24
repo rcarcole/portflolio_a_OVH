@@ -228,7 +228,6 @@ window.addEventListener('scroll',()=>hidePreview(true),true);
 
 /* ---------- sincronización con el servidor (PHP) ---------- */
 const API='api.php';                          // mismo directorio que index.html
-const LIB_TOKEN='560335d0ef5e7cb3cc17a4c5fa7185b5c80a43b9a21b206f';  // debe ser IGUAL que el de api.php
 function payload(){
   return {overrides, added, deleted, title:(tEl.textContent||'Mi biblioteca').trim()};
 }
@@ -247,7 +246,7 @@ function pushSoon(){
 function doPush(){
   if(pushing){ pushAgain=true; return; }
   pushing=true;
-  fetch(API,{method:'POST',headers:{'Content-Type':'application/json','X-Lib-Token':LIB_TOKEN},body:JSON.stringify(payload())})
+  fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload())})
     .then(r=>r.json()).catch(()=>null)
     .finally(()=>{ pushing=false; if(pushAgain){ pushAgain=false; doPush(); } });
 }

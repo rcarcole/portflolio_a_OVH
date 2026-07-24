@@ -4,7 +4,8 @@
 AuthType Basic
 AuthName "Zona privada"
 
-# Ruta absoluta en el hosting de OVH (raíz web: /home/mpqsfjy/www).
-AuthUserFile "/home/mpqsfjy/www/apps/.htpasswd"
+# El fichero de contraseñas vive FUERA de www (no está en el repo ni es
+# accesible por web ni lo pisa el deploy). Súbelo por FTP a /home/mpqsfjy/.htpasswd
+AuthUserFile "/home/mpqsfjy/.htpasswd"
 
 Require valid-user

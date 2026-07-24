@@ -6,10 +6,11 @@ vean y editen lo mismo. Súbelo a la MISMA carpeta que index.html.
 ========================================================================== */
 declare(strict_types=1);
 
-// 1) Cambia este token por algo tuyo y pon EXACTAMENTE el mismo en script.js
-$TOKEN = '560335d0ef5e7cb3cc17a4c5fa7185b5c80a43b9a21b206f';
+// La protección de acceso la hace Apache (Basic Auth sobre /apps): a este
+// script solo se llega tras introducir usuario y contraseña, así que aquí ya
+// no hace falta ningún token (que además sería público al ir en el JS cliente).
 
-// 2) Fichero donde se guardan los datos (se crea solo en el primer guardado)
+// Fichero donde se guardan los datos (se crea solo en el primer guardado)
 $DATA_FILE = __DIR__ . '/library-data.json';
 
 header('Content-Type: application/json; charset=utf-8');
@@ -29,13 +30,6 @@ if ($method === 'GET') {
 
 /* ---- GUARDAR ---- */
 if ($method === 'POST') {
-    $sent = $_SERVER['HTTP_X_LIB_TOKEN'] ?? '';
-    if (!hash_equals($TOKEN, $sent)) {
-        http_response_code(403);
-        echo json_encode(['error' => 'token']);
-        exit;
-    }
-
     $raw = file_get_contents('php://input');
     if ($raw === false || strlen($raw) > 4000000) { // límite ~4 MB
         http_response_code(413);
