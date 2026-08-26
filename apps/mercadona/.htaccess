@@ -1,0 +1,10 @@
+# Impide el acceso directo por URL al fichero de datos de la lista.
+# La app lo lee a través de api.php (server-side), nunca directamente.
+<Files "mercadona-data.json">
+    Require all denied
+</Files>
+
+# Bloquea también cualquier .tmp que pudiera quedar de una escritura
+<FilesMatch "\.tmp$">
+    Require all denied
+</FilesMatch>

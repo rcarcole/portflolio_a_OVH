@@ -1,0 +1,377 @@
+/* ==========================================================================
+   La compra — lista compartida (rocarcoleso.com/mercadona)
+   Pensada para usarse con una mano, en el pasillo del súper.
+   ========================================================================== */
+
+:root{
+  --bg:#E9EEE7;
+  --card:#FFFFFF;
+  --ink:#16261C;
+  --muted:#6E8073;
+  --line:#D3DCD0;
+  --green:#1F7A3D;
+  --green-dark:#155C2D;
+  --alert:#C6371F;
+  --alert-soft:#FBEDEA;
+  --tag:#F2C230;
+  --radius:14px;
+  --shadow:0 1px 2px rgba(22,38,28,.06), 0 8px 24px rgba(22,38,28,.07);
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+
+body{
+  font-family:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color:var(--ink);
+  background-color:var(--bg);
+  line-height:1.4;
+  -webkit-text-size-adjust:100%;
+}
+
+.wrap{
+  max-width:720px;
+  margin:0 auto;
+  padding:20px 16px calc(40px + env(safe-area-inset-bottom));
+}
+
+/* ---------- cabecera ---------- */
+.masthead{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+  padding-bottom:14px;
+  border-bottom:2px solid var(--ink);
+}
+.kicker{
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--green);
+}
+.masthead h1{
+  margin:2px 0 0;
+  font-size:34px;
+  font-weight:800;
+  letter-spacing:-.02em;
+  line-height:1;
+}
+.who{
+  flex:none;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--green-dark);
+  background:#DCE8DC;
+  border:1px solid #C4D6C4;
+  border-radius:999px;
+  padding:5px 10px;
+  white-space:nowrap;
+}
+.who:empty{display:none}
+
+/* ---------- contadores ---------- */
+.statusbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:10px 2px 0;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:12px;
+  font-weight:500;
+  color:var(--muted);
+}
+.counts strong{color:var(--alert);font-weight:700}
+.sync{font-size:11px;letter-spacing:.04em;text-align:right}
+.sync.warn{color:var(--alert)}
+
+/* ---------- añadir ---------- */
+.addbar{
+  position:sticky;
+  top:0;
+  z-index:20;
+  display:flex;
+  gap:8px;
+  margin:12px 0 20px;
+  padding:10px 0;
+  background:linear-gradient(var(--bg) 78%, rgba(233,238,231,0));
+}
+.addbar input{
+  flex:1;
+  min-width:0;
+  font-family:inherit;
+  font-size:16px;           /* 16px evita el zoom automático de iOS */
+  color:var(--ink);
+  background:var(--card);
+  border:1.5px solid var(--line);
+  border-radius:var(--radius);
+  padding:13px 14px;
+  box-shadow:var(--shadow);
+}
+.addbar input::placeholder{color:#9BAB9F}
+.addbar input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(31,122,61,.16)}
+
+.btn-add{
+  flex:none;
+  font-family:inherit;
+  font-size:15px;
+  font-weight:600;
+  color:#fff;
+  background:var(--green);
+  border:none;
+  border-radius:var(--radius);
+  padding:13px 20px;
+  cursor:pointer;
+  box-shadow:var(--shadow);
+}
+.btn-add:hover{background:var(--green-dark)}
+.btn-add:active{transform:translateY(1px)}
+
+/* ---------- bloque FALTA (la nota que te llevas) ---------- */
+.missing{margin-bottom:26px}
+
+.tag{
+  background:var(--card);
+  border:1.5px solid var(--alert);
+  border-bottom:none;
+  border-radius:var(--radius) var(--radius) 0 0;
+  padding:14px 14px 6px;
+  box-shadow:0 -1px 0 rgba(198,55,31,.06), var(--shadow);
+}
+.tag-head{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding-bottom:10px;
+  border-bottom:1px dashed var(--line);
+}
+.tag-title{
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--alert);
+}
+.tag-count{
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:11px;
+  font-weight:700;
+  color:#fff;
+  background:var(--alert);
+  border-radius:999px;
+  padding:2px 8px;
+}
+
+/* borde inferior dentado: la nota parece arrancada */
+.tear{
+  height:10px;
+  background:var(--card);
+  border-left:1.5px solid var(--alert);
+  border-right:1.5px solid var(--alert);
+  -webkit-mask:conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50%/14px 100%;
+  mask:conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50%/14px 100%;
+}
+
+.miss-list{list-style:none;margin:0;padding:0}
+.miss{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:11px 0;
+  border-bottom:1px dashed var(--line);
+}
+.miss:last-child{border-bottom:none}
+.miss-name{
+  flex:1;
+  min-width:0;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:15px;
+  font-weight:700;
+  letter-spacing:.02em;
+  text-transform:uppercase;
+  color:var(--alert);
+  overflow-wrap:anywhere;
+}
+.miss-meta{
+  display:block;
+  font-family:"Archivo",sans-serif;
+  font-size:11px;
+  font-weight:400;
+  letter-spacing:0;
+  text-transform:none;
+  color:var(--muted);
+}
+
+.btn-back{
+  flex:none;
+  font-family:inherit;
+  font-size:13px;
+  font-weight:600;
+  color:var(--green-dark);
+  background:#E4F0E4;
+  border:1px solid #C4D6C4;
+  border-radius:999px;
+  padding:8px 13px;
+  cursor:pointer;
+}
+.btn-back:hover{background:#D6E8D6}
+
+/* ---------- lista normal ---------- */
+.sec-title{
+  margin:0 0 10px;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.rows{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+
+.row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:10px 12px;
+  box-shadow:var(--shadow);
+}
+.row-main{flex:1;min-width:0}
+.row-name{
+  display:block;
+  font-size:16px;
+  font-weight:600;
+  overflow-wrap:anywhere;
+}
+.row-meta{
+  display:block;
+  font-size:11px;
+  color:var(--muted);
+  margin-top:1px;
+}
+
+.row-actions{display:flex;align-items:center;gap:6px;flex:none}
+
+.stepper{
+  display:flex;
+  align-items:center;
+  background:#F2F6F1;
+  border:1px solid var(--line);
+  border-radius:999px;
+  overflow:hidden;
+}
+.stepper button{
+  width:36px;
+  height:36px;
+  font-size:19px;
+  font-weight:600;
+  line-height:1;
+  color:var(--green-dark);
+  background:none;
+  border:none;
+  cursor:pointer;
+}
+.stepper button:hover{background:#E4EDE3}
+.stepper button:active{background:#D6E4D5}
+.qty{
+  min-width:30px;
+  text-align:center;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:15px;
+  font-weight:700;
+  font-variant-numeric:tabular-nums;
+}
+
+.btn-icon{
+  width:36px;
+  height:36px;
+  font-size:16px;
+  line-height:1;
+  color:var(--muted);
+  background:none;
+  border:1px solid transparent;
+  border-radius:999px;
+  cursor:pointer;
+}
+.btn-icon:hover{color:var(--alert);background:var(--alert-soft)}
+
+.empty{
+  color:var(--muted);
+  font-size:14px;
+  text-align:center;
+  padding:26px 10px;
+  border:1px dashed var(--line);
+  border-radius:var(--radius);
+  margin:0;
+}
+
+/* ---------- pie ---------- */
+.foot{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:28px;
+  padding-top:14px;
+  border-top:1px solid var(--line);
+}
+.btn-ghost{
+  font-family:inherit;
+  font-size:13px;
+  font-weight:600;
+  color:var(--muted);
+  background:none;
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:8px 14px;
+  cursor:pointer;
+}
+.btn-ghost:hover{color:var(--alert);border-color:var(--alert)}
+.foot-note{font-size:12px;color:var(--muted)}
+
+/* ---------- aviso flotante ---------- */
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:calc(20px + env(safe-area-inset-bottom));
+  transform:translate(-50%,14px);
+  max-width:calc(100% - 32px);
+  font-size:14px;
+  font-weight:500;
+  color:#fff;
+  background:var(--ink);
+  border-radius:999px;
+  padding:11px 18px;
+  box-shadow:0 10px 30px rgba(22,38,28,.28);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .18s ease, transform .18s ease;
+  z-index:60;
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* ---------- accesibilidad ---------- */
+:focus-visible{outline:2px solid var(--green);outline-offset:2px;border-radius:6px}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important;transition:none !important}
+}
+
+/* ---------- pantallas pequeñas ---------- */
+@media (max-width:420px){
+  .masthead h1{font-size:28px}
+  .btn-add{padding:13px 16px}
+  .row{flex-wrap:wrap}
+  .row-main{flex-basis:100%}
+  .row-actions{margin-left:auto}
+}

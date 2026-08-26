@@ -7,9 +7,9 @@ RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 # --- URLs limpias para las mini-apps ---
 # La carpeta física vive en /apps/<app>, pero la URL sigue siendo /<app>.
 # 1) Añade la barra final (mantiene la URL limpia y que los assets relativos resuelvan)
-RewriteRule ^(zhara|library|ahorro)$ /$1/ [R=301,L]
+RewriteRule ^(zhara|library|ahorro|mercadona)$ /$1/ [R=301,L]
 # 2) Reescritura interna hacia apps/ (el navegador nunca ve "apps/")
-RewriteRule ^(zhara|library|ahorro)/(.*)$ apps/$1/$2 [L]
+RewriteRule ^(zhara|library|ahorro|mercadona)/(.*)$ apps/$1/$2 [L]
 
 # --- Página de error 404 ---
 ErrorDocument 404 /error404.html
