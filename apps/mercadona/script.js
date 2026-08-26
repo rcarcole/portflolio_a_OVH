@@ -107,6 +107,100 @@ function addItem(rawName){
 const setQty     = (id, qty) => touch(id, { qty: Math.max(0, Math.min(999, qty)) });
 const removeItem = id => touch(id, { deleted:true });
 
+/* ---------- renombrar un producto ---------- */
+// Mientras se escribe no se repinta la lista: si entrara una actualización
+// del servidor a media edición, se perdería lo tecleado.
+let editingId = null;
+let renderPending = false;
+
+function startEdit(id, holder){
+  if (editingId) return;
+  const it = items[id];
+  if (!it) return;
+
+  editingId = id;
+  const original = it.name;
+
+  const input = document.createElement('input');
+  input.className = 'name-edit';
+  input.type = 'text';
+  input.value = original;
+  input.setAttribute('aria-label', `Nombre de ${original}`);
+  input.autocomplete = 'off';
+  input.enterKeyHint = 'done';
+
+  holder.replaceChildren(input);
+  input.focus();
+  input.select();
+
+  let done = false;
+
+  const finish = save => {
+    if (done) return;
+    done = true;
+    editingId = null;
+
+    const value = save ? input.value.trim().replace(/\s+/g, ' ') : '';
+
+    if (!save || !value || value === original){
+      if (save && !value) toast('El nombre no puede quedar vacío');
+      redraw();
+      return;
+    }
+
+    // no dejamos dos productos con el mismo nombre
+    const clash = findByName(value);
+    if (clash && clash !== id){
+      toast(`Ya tienes "${items[clash].name}" en la lista`);
+      redraw();
+      return;
+    }
+
+    touch(id, { name: value });   // touch ya repinta
+  };
+
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter'){ e.preventDefault(); input.blur(); }
+    else if (e.key === 'Escape'){ e.preventDefault(); done = true; editingId = null; redraw(); }
+  });
+  input.addEventListener('blur', () => finish(true));
+}
+
+function redraw(){
+  renderPending = false;
+  render();
+}
+
+// Etiqueta de nombre que se puede tocar para renombrar
+function nameLabel(it, className, withMeta){
+  const holder = document.createElement('span');
+  holder.className = className;
+
+  const label = document.createElement('span');
+  label.className = 'name-text';
+  label.textContent = it.name;
+  label.tabIndex = 0;
+  label.setAttribute('role', 'button');
+  label.title = 'Tocar para cambiar el nombre';
+  label.setAttribute('aria-label', `Cambiar el nombre de ${it.name}`);
+
+  const open = e => { e.stopPropagation(); startEdit(it.id, holder); };
+  label.addEventListener('click', open);
+  label.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); open(e); }
+  });
+
+  holder.appendChild(label);
+
+  if (withMeta && it.updatedBy){
+    const meta = document.createElement('span');
+    meta.className = withMeta;
+    meta.textContent = `${it.updatedBy} · ${ago(it.updatedAt)}`;
+    holder.appendChild(meta);
+  }
+  return holder;
+}
+
 /* ---------- pintar ---------- */
 function visible(){
   return Object.keys(items)
@@ -115,6 +209,9 @@ function visible(){
 }
 
 function render(){
+  // si se está escribiendo un nombre, esperamos a terminar
+  if (editingId){ renderPending = true; return; }
+
   const all     = visible();
   const missing = all.filter(i => Number(i.qty) === 0)
                      .sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0));
@@ -132,15 +229,7 @@ function render(){
       const li = document.createElement('li');
       li.className = 'miss';
 
-      const name = document.createElement('span');
-      name.className = 'miss-name';
-      name.textContent = it.name;
-      if (it.updatedBy){
-        const meta = document.createElement('span');
-        meta.className = 'miss-meta';
-        meta.textContent = `${it.updatedBy} · ${ago(it.updatedAt)}`;
-        name.appendChild(meta);
-      }
+      const name = nameLabel(it, 'miss-name', 'miss-meta');
 
       const back = document.createElement('button');
       back.className = 'btn-back';
@@ -172,16 +261,7 @@ function render(){
 
     const main = document.createElement('div');
     main.className = 'row-main';
-    const nm = document.createElement('span');
-    nm.className = 'row-name';
-    nm.textContent = it.name;
-    main.appendChild(nm);
-    if (it.updatedBy){
-      const meta = document.createElement('span');
-      meta.className = 'row-meta';
-      meta.textContent = `${it.updatedBy} · ${ago(it.updatedAt)}`;
-      main.appendChild(meta);
-    }
+    main.appendChild(nameLabel(it, 'row-name', 'row-meta'));
 
     const actions = document.createElement('div');
     actions.className = 'row-actions';
@@ -232,6 +312,7 @@ function render(){
   });
 
   $('empty').hidden = (stock.length > 0 || missing.length > 0);
+  renderPending = false;
 
   /* --- contadores --- */
   $('counts').innerHTML = missing.length
