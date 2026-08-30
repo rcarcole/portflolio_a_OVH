@@ -104,8 +104,33 @@ function addItem(rawName){
   touch(newId(), { name, qty:1, deleted:false });
 }
 
-const setQty     = (id, qty) => touch(id, { qty: Math.max(0, Math.min(999, qty)) });
 const removeItem = id => touch(id, { deleted:true });
+
+/* "want" = cuántas unidades comprar cuando se acabe.
+   Recordamos la cantidad más alta que llegó a tener: si tenías 4 yogures y
+   los vas gastando de uno en uno, al acabarse hay que comprar 4, no 1.
+   Se puede ajustar a mano desde el bloque "Falta". */
+function setQty(id, qty){
+  const q = Math.max(0, Math.min(999, qty));
+  const prev = items[id] || {};
+  const prevQty  = Number(prev.qty)  || 0;
+  const prevWant = Number(prev.want) || 0;
+
+  const want = q > 0
+    ? Math.max(prevWant, q)                                  // sube el listón
+    : (prevWant > 0 ? prevWant : (prevQty > 0 ? prevQty : 1));
+
+  touch(id, { qty: q, want });
+}
+
+// cambia solo cuántas unidades hay que comprar
+const setWant = (id, want) => touch(id, { want: Math.max(1, Math.min(999, want)) });
+
+// "Comprado": vuelve a la lista con las unidades que tocaba comprar
+function restock(id){
+  const it = items[id] || {};
+  setQty(id, Math.max(1, Number(it.want) || 1));
+}
 
 /* ---------- renombrar un producto ---------- */
 // Mientras se escribe no se repinta la lista: si entrara una actualización
@@ -214,7 +239,7 @@ function render(){
 
   const all     = visible();
   const missing = all.filter(i => Number(i.qty) === 0)
-                     .sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0));
+                     .sort((a, b) => a.name.localeCompare(b.name, 'es'));
   const stock   = all.filter(i => Number(i.qty) > 0)
                      .sort((a, b) => a.name.localeCompare(b.name, 'es'));
 
@@ -231,12 +256,36 @@ function render(){
 
       const name = nameLabel(it, 'miss-name', 'miss-meta');
 
+      // cuántas unidades hay que comprar
+      const buy = Math.max(1, Number(it.want) || 1);
+
+      const stepper = document.createElement('div');
+      stepper.className = 'stepper stepper-miss';
+
+      const less = document.createElement('button');
+      less.type = 'button';
+      less.textContent = '−';
+      less.setAttribute('aria-label', `Comprar una unidad menos de ${it.name}`);
+      less.onclick = () => setWant(it.id, buy - 1);
+
+      const num = document.createElement('span');
+      num.className = 'qty';
+      num.textContent = buy;
+
+      const more = document.createElement('button');
+      more.type = 'button';
+      more.textContent = '+';
+      more.setAttribute('aria-label', `Comprar una unidad más de ${it.name}`);
+      more.onclick = () => setWant(it.id, buy + 1);
+
+      stepper.append(less, num, more);
+
       const back = document.createElement('button');
       back.className = 'btn-back';
       back.type = 'button';
       back.textContent = 'Comprado';
-      back.title = 'Vuelve a la lista con cantidad 1';
-      back.onclick = () => { setQty(it.id, 1); toast(`${it.name}: repuesto`); };
+      back.title = `Vuelve a la lista con ${buy} unidad(es)`;
+      back.onclick = () => { restock(it.id); toast(`${it.name}: repuesto (${buy})`); };
 
       const del = document.createElement('button');
       del.className = 'btn-icon';
@@ -245,7 +294,7 @@ function render(){
       del.setAttribute('aria-label', `Quitar ${it.name} de la lista`);
       del.onclick = () => { removeItem(it.id); toast(`${it.name}: fuera de la lista`); };
 
-      li.append(name, back, del);
+      li.append(name, stepper, back, del);
       mList.appendChild(li);
     });
   } else {

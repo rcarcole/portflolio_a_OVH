@@ -59,12 +59,18 @@ function cleanItem(array $in): ?array
     if ($qty < 0)   $qty = 0;
     if ($qty > 999) $qty = 999;
 
+    // cuántas unidades hay que comprar cuando el producto falta
+    $want = (int) ($in['want'] ?? 0);
+    if ($want < 0)   $want = 0;
+    if ($want > 999) $want = 999;
+
     $updatedAt = (int) ($in['updatedAt'] ?? 0);
     if ($updatedAt <= 0) $updatedAt = (int) round(microtime(true) * 1000);
 
     return [
         'name'      => cut($name, 80),
         'qty'       => $qty,
+        'want'      => $want,
         'note'      => cut(trim((string) ($in['note'] ?? '')), 120),
         'deleted'   => !empty($in['deleted']),
         'updatedAt' => $updatedAt,

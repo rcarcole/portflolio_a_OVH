@@ -183,7 +183,8 @@ body{
 .miss{
   display:flex;
   align-items:center;
-  gap:10px;
+  flex-wrap:wrap;
+  gap:8px;
   padding:11px 0;
   border-bottom:1px dashed var(--line);
 }
@@ -208,6 +209,16 @@ body{
   text-transform:none;
   color:var(--muted);
 }
+
+/* cantidad a comprar, dentro del bloque "Falta" */
+.stepper-miss{
+  flex:none;
+  background:#FDF3F1;
+  border-color:#EFC9C1;
+}
+.stepper-miss button{color:var(--alert)}
+.stepper-miss button:hover{background:#F8E4E0}
+.stepper-miss .qty{color:var(--alert)}
 
 .btn-back{
   flex:none;
@@ -396,4 +407,6 @@ body{
   .row{flex-wrap:wrap}
   .row-main{flex-basis:100%}
   .row-actions{margin-left:auto}
+  .miss-name{flex-basis:100%}
+  .stepper-miss{margin-left:auto}
 }
