@@ -11,20 +11,14 @@ const CACHE_QUEUE = 'merc_v1_queue';     // cambios propios aún sin subir
 const CACHE_OPEN  = 'merc_v1_open';      // qué categorías tienes desplegadas (solo tuyo)
 const POLL_MS = 8000;
 
-/* Categorías, en el orden en que se recorre el súper.
-   Para añadir o quitar, basta con tocar esta lista: el identificador (id) es
-   lo que se guarda, así que conviene no cambiarlo una vez en uso. */
+/* Categorías. Para añadir o quitar, basta con tocar esta lista.
+   El identificador (id) es lo que se guarda en el servidor: cambiar un nombre
+   es inofensivo, pero cambiar un id dejaría esos productos sin categoría. */
 const CATS = [
-  { id:'fruta',     name:'Fruta y verdura' },
-  { id:'carne',     name:'Carne y pescado' },
-  { id:'nevera',    name:'Nevera' },
-  { id:'pan',       name:'Panadería y dulces' },
   { id:'despensa',  name:'Despensa' },
-  { id:'especias',  name:'Especias y condimentos' },
-  { id:'congelado', name:'Congelados' },
-  { id:'bebida',    name:'Bebidas' },
-  { id:'higiene',   name:'Higiene personal' },
-  { id:'limpieza',  name:'Limpieza y hogar' }
+  { id:'nevera',    name:'Nevera' },
+  { id:'congelado', name:'Congelador' },
+  { id:'limpieza',  name:'Limpieza' }
 ];
 const NOCAT = { id:'', name:'Sin categoría' };
 
@@ -65,6 +59,16 @@ function normalize(s){
   return (s || '').trim().toLowerCase()
     .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 }
+
+// "arroz chino" -> "Arroz chino" (solo la primera letra; el resto se respeta)
+function capitalize(s){
+  return s ? s.charAt(0).toLocaleUpperCase('es') + s.slice(1) : s;
+}
+
+// texto del buscador, ya normalizado
+let query = '';
+let queryRaw = '';
+const matches = it => !query || normalize(it.name).includes(query);
 
 function ago(ts){
   if(!ts) return '';
@@ -114,7 +118,7 @@ function findByName(name){
 }
 
 function addItem(rawName){
-  const name = (rawName || '').trim().replace(/\s+/g, ' ');
+  const name = capitalize((rawName || '').trim().replace(/\s+/g, ' '));
   if (!name) return;
 
   const existing = findByName(name);
@@ -189,7 +193,7 @@ function startEdit(id, holder){
     done = true;
     editingId = null;
 
-    const value = save ? input.value.trim().replace(/\s+/g, ' ') : '';
+    const value = save ? capitalize(input.value.trim().replace(/\s+/g, ' ')) : '';
 
     if (!save || !value || value === original){
       if (save && !value) toast('El nombre no puede quedar vacío');
@@ -261,7 +265,7 @@ function render(){
   // si se está escribiendo un nombre o eligiendo categoría, esperamos
   if (editingId || selectOpen){ renderPending = true; return; }
 
-  const all     = visible();
+  const all     = visible().filter(matches);
   const byName  = (a, b) => a.name.localeCompare(b.name, 'es');
   const missing = all.filter(i => Number(i.qty) === 0).sort(byName);
   const stock   = all.filter(i => Number(i.qty) >  0).sort(byName);
@@ -288,13 +292,22 @@ function render(){
     list.appendChild(groupBlock('lista', g, false, stockRow));
   });
 
-  $('empty').hidden = (stock.length > 0 || missing.length > 0);
+  const nada = (stock.length === 0 && missing.length === 0);
+  $('empty').hidden = !nada;
+  $('empty').textContent = query
+    ? `No hay nada que coincida con "${queryRaw}".`
+    : 'Aún no hay nada. Escribe arriba lo primero que necesites.';
   renderPending = false;
 
   /* --- contadores --- */
-  $('counts').innerHTML = missing.length
-    ? `<strong>${missing.length} ${missing.length === 1 ? 'falta' : 'faltan'}</strong> · ${stock.length} en la lista`
-    : `${stock.length} en la lista`;
+  if (query){
+    const n = stock.length + missing.length;
+    $('counts').textContent = `${n} ${n === 1 ? 'resultado' : 'resultados'}`;
+  } else {
+    $('counts').innerHTML = missing.length
+      ? `<strong>${missing.length} ${missing.length === 1 ? 'falta' : 'faltan'}</strong> · ${stock.length} en la lista`
+      : `${stock.length} en la lista`;
+  }
 
   showSync();
 }
@@ -316,7 +329,8 @@ function groupBlock(section, g, openByDefault, rowFn){
   box.className = 'group';
 
   const key  = `${section}:${g.cat.id}`;
-  const open = (key in openState) ? !!openState[key] : openByDefault;
+  // buscando, todo se muestra abierto para poder ver los resultados
+  const open = query ? true : ((key in openState) ? !!openState[key] : openByDefault);
 
   const head = document.createElement('button');
   head.type = 'button';
@@ -590,6 +604,23 @@ input.addEventListener('keydown', e => {
     input.value = '';
   }
 });
+
+/* --- buscador --- */
+const search = $('search-input');
+const searchClear = $('search-clear');
+
+function applySearch(){
+  queryRaw = search.value.trim();
+  query = normalize(queryRaw);
+  searchClear.hidden = !queryRaw;
+  render();
+}
+search.addEventListener('input', applySearch);
+search.addEventListener('keydown', e => {
+  if (e.key === 'Escape'){ search.value = ''; applySearch(); search.blur(); }
+  if (e.key === 'Enter')  { e.preventDefault(); search.blur(); }
+});
+searchClear.onclick = () => { search.value = ''; applySearch(); search.focus(); };
 
 $('clear-missing').onclick = () => {
   const missing = visible().filter(i => Number(i.qty) === 0);

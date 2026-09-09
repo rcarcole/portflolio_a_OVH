@@ -27,10 +27,18 @@
     <span class="sync" id="sync" role="status" aria-live="polite"></span>
   </div>
 
-  <div class="addbar">
-    <input id="add-input" type="text" autocomplete="off" autocapitalize="sentences"
-           enterkeyhint="done" placeholder="Añadir producto…" aria-label="Añadir producto">
-    <button class="btn-add" id="add-btn">Añadir</button>
+  <div class="toolbar">
+    <div class="addbar">
+      <input id="add-input" type="text" autocomplete="off" autocapitalize="sentences"
+             enterkeyhint="done" placeholder="Añadir producto…" aria-label="Añadir producto">
+      <button class="btn-add" id="add-btn">Añadir</button>
+    </div>
+    <div class="searchbar">
+      <span class="search-icon" aria-hidden="true">⌕</span>
+      <input id="search-input" type="text" autocomplete="off" enterkeyhint="search"
+             placeholder="Buscar en la lista…" aria-label="Buscar producto">
+      <button class="btn-clear" id="search-clear" type="button" hidden aria-label="Limpiar búsqueda">✕</button>
+    </div>
   </div>
 
   <!-- FALTA: lo que se ha acabado. Va arriba del todo, como una nota para llevar. -->

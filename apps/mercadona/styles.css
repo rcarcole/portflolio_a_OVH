@@ -95,16 +95,18 @@ body{
 .sync{font-size:11px;letter-spacing:.04em;text-align:right}
 .sync.warn{color:var(--alert)}
 
-/* ---------- añadir ---------- */
-.addbar{
+/* ---------- barra fija: añadir + buscar ---------- */
+.toolbar{
   position:sticky;
   top:0;
   z-index:20;
-  display:flex;
-  gap:8px;
   margin:12px 0 20px;
   padding:10px 0;
-  background:linear-gradient(var(--bg) 78%, rgba(233,238,231,0));
+  background:linear-gradient(var(--bg) 88%, rgba(233,238,231,0));
+}
+.addbar{
+  display:flex;
+  gap:8px;
 }
 .addbar input{
   flex:1;
@@ -120,6 +122,49 @@ body{
 }
 .addbar input::placeholder{color:#9BAB9F}
 .addbar input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(31,122,61,.16)}
+
+/* buscador */
+.searchbar{
+  position:relative;
+  display:flex;
+  align-items:center;
+  margin-top:8px;
+}
+.search-icon{
+  position:absolute;
+  left:13px;
+  font-size:17px;
+  line-height:1;
+  color:var(--muted);
+  pointer-events:none;
+}
+.searchbar input{
+  width:100%;
+  font-family:inherit;
+  font-size:16px;           /* 16px evita el zoom automático de iOS */
+  color:var(--ink);
+  background:var(--card);
+  border:1.5px solid var(--line);
+  border-radius:999px;
+  padding:10px 38px 10px 34px;
+}
+.searchbar input::placeholder{color:#9BAB9F}
+.searchbar input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(31,122,61,.16)}
+
+.btn-clear{
+  position:absolute;
+  right:6px;
+  width:30px;
+  height:30px;
+  font-size:14px;
+  line-height:1;
+  color:var(--muted);
+  background:none;
+  border:none;
+  border-radius:999px;
+  cursor:pointer;
+}
+.btn-clear:hover{color:var(--alert);background:var(--alert-soft)}
 
 .btn-add{
   flex:none;
