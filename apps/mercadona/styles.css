@@ -347,6 +347,71 @@ body{
   margin:0;
 }
 
+/* ---------- categorías plegables ---------- */
+.group{list-style:none}
+.miss-list > .group + .group{margin-top:10px}
+
+.group-head{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  width:100%;
+  font-family:inherit;
+  font-size:13px;
+  font-weight:600;
+  text-align:left;
+  color:var(--ink);
+  background:none;
+  border:none;
+  border-bottom:1px solid var(--line);
+  padding:9px 2px;
+  cursor:pointer;
+}
+.group-head:hover{color:var(--green-dark)}
+.group-head-miss{border-bottom:1px dashed var(--line);color:var(--alert)}
+
+.chev{
+  flex:none;
+  font-size:11px;
+  color:var(--muted);
+  transition:transform .15s ease;
+}
+.chev.open{transform:rotate(90deg)}
+.group-head-miss .chev{color:var(--alert)}
+
+.group-name{flex:1;min-width:0}
+.group-count{
+  flex:none;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:11px;
+  font-weight:700;
+  color:var(--muted);
+  background:#DEE7DC;
+  border-radius:999px;
+  padding:2px 8px;
+}
+.group-head-miss .group-count{color:#fff;background:var(--alert)}
+
+.group .rows{padding-top:8px}
+.group .miss-list{padding-top:2px}
+
+/* selector de categoría de cada producto */
+.cat-pick{
+  margin-top:4px;
+  max-width:100%;
+  font-family:inherit;
+  font-size:11px;
+  font-weight:500;
+  color:var(--green-dark);
+  background:#EEF4ED;
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:3px 8px;
+  cursor:pointer;
+}
+.cat-pick.cat-none{color:var(--muted);border-style:dashed}
+.cat-pick:focus{outline:none;border-color:var(--green)}
+
 /* ---------- pie ---------- */
 .foot{
   display:flex;

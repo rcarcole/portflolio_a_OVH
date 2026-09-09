@@ -64,6 +64,10 @@ function cleanItem(array $in): ?array
     if ($want < 0)   $want = 0;
     if ($want > 999) $want = 999;
 
+    // categoría (identificador corto; el navegador valida cuál es)
+    $cat = strtolower(preg_replace('/[^A-Za-z0-9_\-]/', '', (string) ($in['cat'] ?? '')));
+    $cat = substr($cat, 0, 20);
+
     $updatedAt = (int) ($in['updatedAt'] ?? 0);
     if ($updatedAt <= 0) $updatedAt = (int) round(microtime(true) * 1000);
 
@@ -71,6 +75,7 @@ function cleanItem(array $in): ?array
         'name'      => cut($name, 80),
         'qty'       => $qty,
         'want'      => $want,
+        'cat'       => $cat,
         'note'      => cut(trim((string) ($in['note'] ?? '')), 120),
         'deleted'   => !empty($in['deleted']),
         'updatedAt' => $updatedAt,
