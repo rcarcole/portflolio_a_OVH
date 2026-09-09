@@ -21,6 +21,10 @@
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 
+/* Un elemento con [hidden] debe quedar oculto siempre: sin esto, cualquier
+   regla con display (por ejemplo .rows{display:flex}) lo volvería visible. */
+[hidden]{display:none !important}
+
 body{
   font-family:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
   color:var(--ink);
